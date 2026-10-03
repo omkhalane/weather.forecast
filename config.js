@@ -1,0 +1,1 @@
+window.WEATHER_PUBLIC_KEY = "";
