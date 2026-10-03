@@ -1,5 +1,3 @@
-<!-- Repository hero -->
-
 <p align="center">
   <img src="./images/weather-app.png" alt="Weather Forecast" width="120" />
 </p>
@@ -13,9 +11,6 @@
 <p align="center">
   <a href="https://github.com/omkhalane/weather.forecast">
     <img src="https://img.shields.io/github/stars/omkhalane/weather.forecast?style=for-the-badge&logo=github&label=Stars" alt="GitHub stars" />
-  </a>
-  <a href="https://github.com/omkhalane/weather.forecast/network/members">
-    <img src="https://img.shields.io/github/forks/omkhalane/weather.forecast?style=for-the-badge&logo=github&label=Forks" alt="GitHub forks" />
   </a>
   <img src="https://img.shields.io/badge/JavaScript-vanilla-F7DF1E?style=for-the-badge&logo=javascript&logoColor=111827" alt="JavaScript" />
   <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5" />
@@ -34,7 +29,7 @@
 
 ## About
 
-**Weather Forecast** is a lightweight frontend weather application built with HTML, CSS, and vanilla JavaScript.
+**Weather Forecast** is a lightweight weather application built with HTML, CSS, and vanilla JavaScript.
 
 It provides current weather conditions for the user's location or a searched city, with a simple interface designed to stay fast, readable, and dependency-free.
 
@@ -65,7 +60,7 @@ It provides current weather conditions for the user's location or a searched cit
              │
              ▼
 ┌──────────────────────────┐
-│   Serverless API Layer   │
+│    Weather API Layer     │
 │                          │
 │   /api/weather           │
 │   /api/cities            │
@@ -75,14 +70,7 @@ It provides current weather conditions for the user's location or a searched cit
 ┌──────────────────────────┐
 │      OpenWeather API     │
 └──────────────────────────┘
-
-OPENWEATHER_API_KEY
-        │
-        ▼
- Server environment only
 ```
-
-The browser never receives the OpenWeather API key. Weather requests are routed through serverless functions, which read the credential from the deployment environment.
 
 ## Tech Stack
 
@@ -92,8 +80,9 @@ The browser never receives the OpenWeather API key. Weather requests are routed 
 | Client logic | Vanilla JavaScript |
 | Weather data | OpenWeather API |
 | Location | Browser Geolocation API |
-| Hosting | Vercel-compatible serverless functions |
 | Persistence | `sessionStorage` |
+| Static hosting | GitHub Pages |
+| Serverless hosting | Vercel-compatible functions |
 
 ## Project Structure
 
@@ -110,8 +99,7 @@ weather.forecast/
 │   ├── search.png
 │   ├── weather-app.png
 │   └── wind.png
-├── .env.example
-├── .gitignore
+├── config.js
 ├── index.html
 ├── script.js
 ├── style.css
@@ -121,38 +109,30 @@ weather.forecast/
 
 ## Getting Started
 
-### 1. Clone
+### Clone
 
 ```bash
 git clone https://github.com/omkhalane/weather.forecast.git
 cd weather.forecast
 ```
 
-### 2. Configure the API key
+### GitHub Pages
 
-Create an environment variable named:
+GitHub Pages is a static host. It cannot keep a browser-delivered weather credential private.
+
+For Pages, use a credential intended for client-side use and restrict it as tightly as your OpenWeather account allows. Do not use an unrestricted production credential.
+
+For deployments that support server-side environment variables, the included `api/` routes keep the credential on the server.
+
+### GitHub Pages setup
+
+Open **Settings → Pages** and choose:
 
 ```text
-OPENWEATHER_API_KEY=your_api_key
+Source: Deploy from a branch
+Branch: main
+Folder: / (root)
 ```
-
-The key must be configured in the server environment used to deploy the `/api` functions. Do **not** put it inside `script.js`, `index.html`, or any other browser-delivered file.
-
-For local development, keep credentials in an ignored environment file such as `.env.local`.
-
-### 3. Deploy
-
-The repository is structured for a Vercel deployment.
-
-Set `OPENWEATHER_API_KEY` in the project's Environment Variables, then deploy the repository.
-
-> GitHub Pages is a static host and cannot securely store a private OpenWeather credential for browser-side requests. Use the serverless deployment for the application with protected API access.
-
-## Security
-
-The OpenWeather credential has been moved out of the frontend and into a server-side environment variable.
-
-Because the previous credential was publicly committed, it should be treated as compromised and rotated/revoked before using the application in production.
 
 ## License
 
@@ -161,20 +141,23 @@ This project is licensed under the [MIT License](./LICENSE).
 ## Connect
 
 <p align="center">
-  <a href="https://github.com/omkhalane">
-    <img src="https://img.shields.io/badge/GitHub-omkhalane-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
+  <a href="https://github.com/omkhalane" aria-label="GitHub" title="GitHub">
+    <img src="https://cdn.simpleicons.org/github/181717" width="30" alt="" />
   </a>
-  <a href="mailto:om.j.khalane@gmail.com">
-    <img src="https://img.shields.io/badge/Gmail-om.j.khalane%40gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail" />
+  &nbsp;&nbsp;
+  <a href="mailto:om.j.khalane@gmail.com" aria-label="Email" title="Email">
+    <img src="https://cdn.simpleicons.org/gmail/EA4335" width="30" alt="" />
   </a>
-  <a href="https://omkhalane.github.io">
-    <img src="https://img.shields.io/badge/Portfolio-omkhalane.github.io-2563EB?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Portfolio" />
+  &nbsp;&nbsp;
+  <a href="https://omkhalane.github.io" aria-label="Portfolio" title="Portfolio">
+    <img src="https://cdn.simpleicons.org/googlechrome/2563EB" width="30" alt="" />
   </a>
-  <a href="https://www.linkedin.com/in/omkhalane/">
-    <img src="https://img.shields.io/badge/LinkedIn-Om_Khalane-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
+  &nbsp;&nbsp;
+  <a href="https://www.linkedin.com/in/omkhalane/" aria-label="LinkedIn" title="LinkedIn">
+    <img src="https://cdn.simpleicons.org/linkedin/0A66C2" width="30" alt="" />
   </a>
 </p>
 
 <p align="center">
-  Made with 💙 by <a href="https://github.com/omkhalane">Om Khalane</a>
+  Made with 💙 by <a href="https://github.com/omkhalane">@omkhalane</a>
 </p>
